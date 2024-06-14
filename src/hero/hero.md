@@ -1,5 +1,5 @@
 ---
-title: Hearing protectors
+title: Ear protectors
 description: Discover Auritech Hearing Protectors, meticulously crafted by top
   European audiologists and hearing technicians with over two decades of
   expertise.
