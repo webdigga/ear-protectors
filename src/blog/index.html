@@ -2,34 +2,68 @@
 layout: blogList
 ---
 
-<section class="mt-15">
-    {% set bloglist = collections.blogPosts %}
+<section class="space-y-8">
+  {% set bloglist = collections.blogPosts %}
 
-    {% for blog in bloglist | reverse %}
-        <article class="my-8">
+  {% for blog in bloglist | reverse %}
+    <article class="bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-md transition-shadow">
+      <div class="flex flex-col md:flex-row">
+        {% if blog.data.rightImage %}
+          <div class="md:w-64 flex-shrink-0 bg-slate-100">
+            <a href="{{ blog.url | url }}" class="block h-full">
+              <img
+                src="{{ blog.data.rightImage }}"
+                alt="{{ blog.data.rightImageAlt }}"
+                class="w-full h-48 md:h-full object-cover"
+                loading="lazy"
+              />
+            </a>
+          </div>
+        {% endif %}
 
-            <h2 class="font-bold text-3xl text-gray-900 mb-2">
+        <div class="p-6 flex flex-col justify-between flex-grow">
+          <div>
+            <time class="text-sm text-slate-400 mb-2 block">{{ blog.data.date | readableDate }}</time>
 
-                <a href="{{ blog.url | url }}">
-                    {% if blog.data.title %}
-                        {{ blog.data.title }}
-                    {% else %}
-                        Untitled
-                    {% endif %}
-                </a>
+            <h2 class="text-xl font-semibold text-slate-800 mb-2 hover:text-slate-600 transition-colors">
+              <a href="{{ blog.url | url }}">
+                {% if blog.data.title %}
+                  {{ blog.data.title }}
+                {% else %}
+                  Untitled
+                {% endif %}
+              </a>
             </h2>
+
             {% if blog.data.description %}
-                <p class="text-lg text-gray-500 mb-3">
-                    {{ blog.data.description }}
-                </p>
+              <p class="text-slate-500 mb-4 line-clamp-2">
+                {{ blog.data.description }}
+              </p>
             {% endif %}
+          </div>
 
-			<time class="text-gray-500 mb-3 text-sm italic block">{{ blog.data.date | readableDate }}</time>
+          <div class="flex items-center justify-between mt-4">
+            <div class="flex items-center">
+              <img
+                src="/static/img/jonny-rowse.webp"
+                alt="Jonny Rowse"
+                class="w-8 h-8 rounded-full object-cover mr-2"
+              />
+              <span class="text-sm text-slate-500">Jonny Rowse</span>
+            </div>
 
-			<a href="{{ blog.url | url }}" class="text-[color:var(--primary-color)] hover:text-[color:var(--primary-hover)] font-bold text-lg">
-				Read more →
-			</a>
-
-        </article>
-    {% endfor %}
+            <a
+              href="{{ blog.url | url }}"
+              class="text-slate-700 hover:text-slate-900 font-medium text-sm inline-flex items-center transition-colors"
+            >
+              Read more
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  {% endfor %}
 </section>

@@ -1,0 +1,43 @@
+{% if tags and (('product' in tags) or ('blog' in tags)) %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ env.site }}/"
+    }
+    {% if 'product' in tags %},
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Ear Plugs",
+      "item": "{{ env.site }}/ear-plugs/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ title }}",
+      "item": "{{ env.site }}{{ page.url }}"
+    }
+    {% elif 'blog' in tags %},
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "{{ env.site }}/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ title }}",
+      "item": "{{ env.site }}{{ page.url }}"
+    }
+    {% endif %}
+  ]
+}
+</script>
+{% endif %}

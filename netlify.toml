@@ -1,3 +1,61 @@
 [build]
   publish = "_site"
   command = "npm run build"
+
+# 301 Redirects: Products /posts/ -> /ear-plugs/
+[[redirects]]
+  from = "/posts/hearing-protection-for-bikers/"
+  to = "/ear-plugs/hearing-protection-for-bikers/"
+  status = 301
+
+[[redirects]]
+  from = "/posts/shooting-ear-plugs/"
+  to = "/ear-plugs/shooting-ear-plugs/"
+  status = 301
+
+[[redirects]]
+  from = "/posts/custom-fit-earplugs/"
+  to = "/ear-plugs/custom-fit-earplugs/"
+  status = 301
+
+[[redirects]]
+  from = "/posts/swimming-ear-plugs/"
+  to = "/ear-plugs/swimming-ear-plugs/"
+  status = 301
+
+[[redirects]]
+  from = "/posts/music-ear-plugs/"
+  to = "/ear-plugs/music-ear-plugs/"
+  status = 301
+
+[[redirects]]
+  from = "/posts/ear-protectors-music/"
+  to = "/ear-plugs/ear-protectors-music/"
+  status = 301
+
+[[redirects]]
+  from = "/posts/ear-protectors-travel/"
+  to = "/ear-plugs/ear-protectors-travel/"
+  status = 301
+
+[[redirects]]
+  from = "/posts/hearing-protectors-for-workers/"
+  to = "/ear-plugs/hearing-protectors-for-workers/"
+  status = 301
+
+# 301 Redirects: Blog posts /posts/ -> /blog/
+[[redirects]]
+  from = "/posts/do-ear-defenders-and-ear-plugs-work/"
+  to = "/blog/do-ear-defenders-and-ear-plugs-work/"
+  status = 301
+
+[[redirects]]
+  from = "/posts/why-is-hearing-and-ear-protection-important-for-motorcyclists/"
+  to = "/blog/why-is-hearing-and-ear-protection-important-for-motorcyclists/"
+  status = 301
+
+# 404 fallback
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404

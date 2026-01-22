@@ -11,6 +11,11 @@
 	<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
 	<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
 
+    <!-- Google Fonts - Poppins & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+
 	{% if ignore %}
 	  <meta name="robots" content="noindex"/>
 	{% endif %}
@@ -54,7 +59,33 @@
 
     <meta name="og:site_name" property="og:site_name" content="{{ settings.title }}">
 	<meta name="twitter:site" content="{{ settings.title }}">
-    <meta name="og:locale" property="og:locale" content="en_GB">  
+    <meta name="og:locale" property="og:locale" content="en_GB">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ env.site }}{{ page.url }}" />
+
+    <!-- Open Graph Image -->
+    {% if rightImage %}
+      <meta property="og:image" content="{{ env.site }}{{ rightImage }}" />
+    {% else %}
+      <meta property="og:image" content="{{ env.site }}/static/img/og-default.jpg" />
+    {% endif %}
+    <meta property="og:url" content="{{ env.site }}{{ page.url }}" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    {% if rightImage %}
+      <meta name="twitter:image" content="{{ env.site }}{{ rightImage }}" />
+    {% else %}
+      <meta name="twitter:image" content="{{ env.site }}/static/img/og-default.jpg" />
+    {% endif %}
+
+    <!-- Schema.org Structured Data -->
+    {% include "./partials/schema-organization.html" %}
+    {% include "./partials/schema-website.html" %}
+    {% include "./partials/schema-product.html" %}
+    {% include "./partials/schema-article.html" %}
+    {% include "./partials/schema-breadcrumbs.html" %}
 
     <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
 
@@ -76,9 +107,16 @@
   </head>
 
   <body class="bg-white">
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">
+      Skip to main content
+    </a>
+
     {% include "./partials/navbar.html" %}
 
-    {{ content | safe }}
+    <main id="main-content">
+      {{ content | safe }}
+    </main>
 
     {% include "./partials/footer.html" %}
 

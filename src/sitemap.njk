@@ -1,10 +1,18 @@
 ---
 layout: false
-permalink: sitemap.txt
+permalink: sitemap.xml
 ignore: true
 ---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {%- for item in collections.all %}
-  {% if not item.data.ignore and not r/^\/admin\//i.test(item.url) %}
-    {{ env.site }}{{ item.url | replace('.html', '') }}
+  {% if not item.data.ignore and '/admin/' not in item.url %}
+  <url>
+    <loc>{{ env.site }}{{ item.url | replace('.html', '') }}</loc>
+    <lastmod>{{ item.date | isoDate }}</lastmod>
+    <changefreq>{% if item.url == '/' %}daily{% else %}weekly{% endif %}</changefreq>
+    <priority>{% if item.url == '/' %}1.0{% elif item.data.tags and 'product' in item.data.tags %}0.8{% else %}0.6{% endif %}</priority>
+  </url>
   {% endif %}
 {%- endfor %}
+</urlset>

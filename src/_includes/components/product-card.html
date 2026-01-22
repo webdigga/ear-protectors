@@ -1,72 +1,88 @@
-<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow flex flex-col">
-	{% if productCard.data.affiliateLink %}
-		<a target="_blank" rel="noopener" href="{{ productCard.data.affiliateLink }}">
-			<img
-				class="rounded-t-lg max-h-fit mx-auto"
-				src="{{ productCard.data.image }}"
-				alt="{{ productCard.data.imageAlt }}"
-				width="300"
-				height="190"
-				loading="lazy"
-			/>
-		</a>
-	{% else %}
-		<img
-			class="rounded-t-lg max-h-fit mx-auto"
-			src="{{ productCard.data.image }}"
-			alt="{{ productCard.data.imageAlt }}"
-			width="300"
-			height="190"
-			loading="lazy"
-		/>
-	{% endif %}
+<article class="bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col">
+  <!-- Product Image -->
+  <div class="relative overflow-hidden bg-white">
+    {% if productCard.data.affiliateLink %}
+      <a target="_blank" rel="noopener" href="{{ productCard.data.affiliateLink }}" class="block">
+        <img
+          class="w-full h-48 object-contain p-4 hover:scale-105 transition-transform duration-300"
+          src="{{ productCard.data.image }}"
+          alt="{{ productCard.data.imageAlt }}"
+          width="300"
+          height="190"
+          loading="lazy"
+        />
+      </a>
+    {% else %}
+      <img
+        class="w-full h-48 object-contain p-4"
+        src="{{ productCard.data.image }}"
+        alt="{{ productCard.data.imageAlt }}"
+        width="300"
+        height="190"
+        loading="lazy"
+      />
+    {% endif %}
 
-	<div class="p-5  flex flex-col grow">
-		{% if productCard.data.affiliateLink %}
-			<a target="_blank" rel="noopener" href="{{ productCard.data.affiliateLink }}">
-				<h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ productCard.data.title }}</h2>
-			</a>
-		{% else %}
-			<h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{ productCard.data.title }}</h2>
-		{% endif %}
+    <!-- Rating Badge -->
+    {% if productCard.data.productRating %}
+      <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-lg shadow-sm flex items-center space-x-1">
+        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+        </svg>
+        <span class="text-sm font-semibold text-slate-700">{{ productCard.data.productRating }}</span>
+      </div>
+    {% endif %}
+  </div>
 
-		<p class="mb-3 font-normal text-gray-700 grow">{{ productCard.data.description }}</p>
+  <!-- Card Content -->
+  <div class="p-5 flex flex-col flex-grow">
+    <h2 class="text-lg font-semibold text-slate-800 mb-2 line-clamp-2">
+      {{ productCard.data.title }}
+    </h2>
 
-		<div class="flex justify-between">
-			{% if productCard.data.articleLink %}
-				<a
-					href="{{ productCard.data.articleLink }}"
-					class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-[color:var(--primary-color)] rounded-lg hover:bg-[color:var(--primary-hover)] focus:ring-4 focus:outline-none focus:ring-blue-300 self-start mt-auto">
-					Read more
-					<svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-						<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-					</svg>
-				</a>
-			{% endif %}
+    <p class="text-slate-500 text-sm mb-4 line-clamp-3 flex-grow">
+      {{ productCard.data.description }}
+    </p>
 
-			{% if productCard.data.productRating or productCard.data.productReviews %}
-				<div class="flex items-center">
-					{% if productCard.data.productRating %}
-						<svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-						<p class="ml-2 text-sm font-bold text-gray-900">{{ productCard.data.productRating }}</p>
-					{% endif %}
+    <!-- Reviews Link -->
+    {% if productCard.data.productReviews and productCard.data.affiliateLink %}
+      <a
+        target="_blank"
+        rel="noopener"
+        href="{{ productCard.data.affiliateLink }}"
+        class="text-sm text-slate-500 hover:text-slate-700 mb-4 inline-flex items-center"
+      >
+        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+        </svg>
+        {{ productCard.data.productReviews }} reviews on Amazon
+      </a>
+    {% endif %}
 
-					{% if productCard.data.productRating and productCard.data.productReviews %}
-						<span class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full"></span>
-					{% endif %}
+    <!-- Action Buttons -->
+    <div class="flex gap-3 mt-auto">
+      {% if productCard.data.articleLink %}
+        <a
+          href="{{ productCard.data.articleLink }}"
+          class="flex-1 inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-slate-700 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors"
+        >
+          Read Review
+        </a>
+      {% endif %}
 
-					{% if productCard.data.productReviews and productCard.data.affiliateLink %}
-						<a
-							target="_blank"
-							rel="noopener"
-							href="{{ productCard.data.affiliateLink }}"
-							class="text-sm font-medium text-gray-900 underline hover:no-underline">
-							{{ productCard.data.productReviews }} reviews
-						</a>
-					{% endif %}
-				</div>
-			{% endif %}
-		</div>
-		
-	</div>
-</div>
+      {% if productCard.data.affiliateLink %}
+        <a
+          target="_blank"
+          rel="noopener"
+          href="{{ productCard.data.affiliateLink }}"
+          class="flex-1 inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium text-slate-900 bg-amber-400 rounded-lg hover:bg-amber-500 transition-colors"
+        >
+          View on Amazon
+          <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</article>

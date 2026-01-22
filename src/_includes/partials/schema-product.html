@@ -1,0 +1,38 @@
+{% if tags and 'product' in tags %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ title }}",
+  "description": "{{ description }}",
+  {% if rightImage %}
+  "image": "{{ env.site }}{{ rightImage }}",
+  {% endif %}
+  {% if productRating %}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ productRating }}",
+    "reviewCount": "{{ productReviews }}",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  {% endif %}
+  {% if affiliateLink %}
+  "offers": {
+    "@type": "Offer",
+    "url": "{{ affiliateLink }}",
+    "priceCurrency": "GBP",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "{% if affiliateName %}{{ affiliateName }}{% else %}Amazon{% endif %}"
+    }
+  },
+  {% endif %}
+  "brand": {
+    "@type": "Brand",
+    "name": "Auritech"
+  }
+}
+</script>
+{% endif %}

@@ -2,13 +2,17 @@
 title: Blog
 layout: default
 type: website
-description: A list of Auritech related blog posts
+description: Expert articles and guides on hearing protection, ear plugs, and ear care from the Moulded Ear Plugs team.
 ---
 
-<div class="container max-w-3xl mt-6 px-6">
+<div class="container max-w-4xl mx-auto px-4 lg:px-8 py-8">
+  <!-- Page Header -->
+  <header class="mb-12 text-center">
+    <h1 class="text-4xl font-bold text-slate-900 mb-4">{{ title }}</h1>
+    <p class="text-lg text-slate-500 max-w-2xl mx-auto">
+      Expert articles and guides on hearing protection, helping you make informed decisions about your ear care.
+    </p>
+  </header>
 
-    <h1 class="text-left font-bold text-5xl">{{ title }}</h1>
-
-    {{ content | safe }}
-
+  {{ content | safe }}
 </div>

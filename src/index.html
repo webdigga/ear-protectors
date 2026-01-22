@@ -5,16 +5,41 @@ path: home
 
 {% include "./_includes/components/hero.html" %}
 
-<div class="container mx-auto flex flex-col justify-center items-center">
+<div class="container mx-auto px-4 lg:px-8 py-16">
 
   {% include "./_includes/components/homepageSpiel.html" %}
 
-  <!-- Product cards -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-4 lg:mx-0">
-	{% set productCardList = collections.productCard %}
+  <!-- Section Header -->
+  <div class="text-center mb-12">
+    <h2 class="text-3xl font-bold text-slate-900 mb-4">Our Top Recommendations</h2>
+    <p class="text-lg text-slate-500 max-w-2xl mx-auto">
+      Carefully selected ear protection products reviewed by our expert team
+    </p>
+  </div>
+
+  <!-- Product Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% set productCardList = collections.productCard %}
 
     {% for productCard in productCardList | sort(false, true, 'data.order') %}
-		{% include "./_includes/components/product-card.html" %}
+      {% include "./_includes/components/product-card.html" %}
     {% endfor %}
+  </div>
+
+  <!-- CTA Section -->
+  <div class="mt-16 bg-slate-50 rounded-2xl p-8 lg:p-12 text-center">
+    <h3 class="text-2xl font-bold text-slate-900 mb-4">Need Help Choosing?</h3>
+    <p class="text-slate-500 mb-6 max-w-xl mx-auto">
+      Check out our blog for detailed guides on selecting the right ear protection for your needs.
+    </p>
+    <a
+      href="/blog/"
+      class="inline-flex items-center px-6 py-3 text-white bg-slate-800 rounded-lg hover:bg-slate-900 transition-colors"
+    >
+      Browse Our Blog
+      <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+      </svg>
+    </a>
   </div>
 </div>

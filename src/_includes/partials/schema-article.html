@@ -1,0 +1,33 @@
+{% if tags and 'blog' in tags %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ title }}",
+  "description": "{{ description }}",
+  {% if rightImage %}
+  "image": "{{ env.site }}{{ rightImage }}",
+  {% endif %}
+  "datePublished": "{{ date | isoDateTime }}",
+  "dateModified": "{{ date | isoDateTime }}",
+  "author": {
+    "@type": "Person",
+    "name": "Jonny Rowse",
+    "jobTitle": "Editor",
+    "image": "{{ env.site }}/static/img/jonny-rowse.webp"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ settings.siteName }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ env.site }}{{ settings.logoUrl }}"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ env.site }}{{ page.url }}"
+  }
+}
+</script>
+{% endif %}

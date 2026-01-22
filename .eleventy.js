@@ -20,6 +20,16 @@ module.exports = function (eleventyConfig) {
     );
   });
 
+  // ISO date for sitemap
+  eleventyConfig.addFilter("isoDate", (dateObj) => {
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-MM-dd");
+  });
+
+  // ISO datetime for schema.org
+  eleventyConfig.addFilter("isoDateTime", (dateObj) => {
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toISO();
+  });
+
   // Syntax Highlighting for Code blocks
   eleventyConfig.addPlugin(syntaxHighlight);
 
@@ -76,6 +86,26 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("blogPosts", function(collectionApi) {
     return collectionApi.getFilteredByTags("blog");
+  });
+
+  // Computed permalinks for URL restructuring
+  eleventyConfig.addGlobalData("eleventyComputed", {
+    permalink: (data) => {
+      // Skip if permalink is already explicitly set
+      if (data.permalink === false || (data.permalink && !data.permalink.includes('/posts/'))) {
+        return data.permalink;
+      }
+      // Product pages go to /ear-plugs/{slug}/
+      if (data.tags && data.tags.includes("product")) {
+        return `/ear-plugs/${data.page.fileSlug}/`;
+      }
+      // Blog posts go to /blog/{slug}/
+      if (data.tags && data.tags.includes("blog")) {
+        return `/blog/${data.page.fileSlug}/`;
+      }
+      // Default permalink (articles stay at /posts/)
+      return data.permalink;
+    }
   });
 
   // Let Eleventy transform HTML files as nunjucks

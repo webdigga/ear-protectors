@@ -1,7 +1,7 @@
 ---
 title: Why is Hearing and Ear Protection Important For Motorcyclists?
 description: The Best Ear Plugs For Bikers. Biker Ear Plugs From Auritech
-author: Arragon Affiliates
+author: Jonny Rowse
 date: 2024-04-25
 type: article
 isAmazon: false

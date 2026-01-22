@@ -3,7 +3,7 @@ title: Water sports ear plugs
 description: Regular exposure to water can lead to bacterial build-up,
   irritation, and potential damage inside the ear. To safeguard the middle ear
   and eardrum from water contact, it's advisable to use hearing protectors.
-articleLink: /posts/swimming-ear-plugs/
+articleLink: /ear-plugs/swimming-ear-plugs/
 affiliateLink: https://www.amazon.co.uk/AURITECH-WATER-SPORTS-Intelligent-Protection/dp/B00DEDN4JE
 imageAlt: Water sports ear protection
 productRating: "4.5"

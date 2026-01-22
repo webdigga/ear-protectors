@@ -1,9 +1,26 @@
 items:
   - text: Home
     url: /
-  - text: Hearing Protection For Bikers
-    url: /posts/hearing-protection-for-bikers/
-  - text: Shooting Ear Plugs
-    url: /posts/shooting-ear-plugs/
+  - text: Ear Plugs
+    dropdown: true
+    children:
+      - text: Bikers & Motorcyclists
+        url: /ear-plugs/hearing-protection-for-bikers/
+      - text: Shooting & Hunting
+        url: /ear-plugs/shooting-ear-plugs/
+      - text: Swimming & Water Sports
+        url: /ear-plugs/swimming-ear-plugs/
+      - text: Music & Musicians
+        url: /ear-plugs/music-ear-plugs/
+      - text: Concerts & Festivals
+        url: /ear-plugs/ear-protectors-music/
+      - text: Travel & Flying
+        url: /ear-plugs/ear-protectors-travel/
+      - text: Work & Industrial
+        url: /ear-plugs/hearing-protectors-for-workers/
+      - text: Custom Fit
+        url: /ear-plugs/custom-fit-earplugs/
   - text: Blog
     url: /blog/
+  - text: About
+    url: /posts/about/
