@@ -7,34 +7,49 @@
     {
       "@type": "ListItem",
       "position": 1,
-      "name": "Home",
-      "item": "{{ env.site }}/"
+      "item": {
+        "@type": "WebPage",
+        "@id": "{{ env.site }}/",
+        "name": "Home"
+      }
     }
     {% if 'product' in tags %},
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Ear Plugs",
-      "item": "{{ env.site }}/ear-plugs/"
+      "item": {
+        "@type": "WebPage",
+        "@id": "{{ env.site }}/ear-plugs/",
+        "name": "Ear Plugs"
+      }
     },
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "{{ title }}",
-      "item": "{{ env.site }}{{ page.url }}"
+      "item": {
+        "@type": "WebPage",
+        "@id": "{{ env.site }}{{ page.url }}",
+        "name": "{{ title }}"
+      }
     }
     {% elif 'blog' in tags %},
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Blog",
-      "item": "{{ env.site }}/blog/"
+      "item": {
+        "@type": "WebPage",
+        "@id": "{{ env.site }}/blog/",
+        "name": "Blog"
+      }
     },
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "{{ title }}",
-      "item": "{{ env.site }}{{ page.url }}"
+      "item": {
+        "@type": "WebPage",
+        "@id": "{{ env.site }}{{ page.url }}",
+        "name": "{{ title }}"
+      }
     }
     {% endif %}
   ]
