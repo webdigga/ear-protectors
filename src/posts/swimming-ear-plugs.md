@@ -10,6 +10,7 @@ isAmazon: true
 affiliateName: Amazon
 productRating: "3.1"
 productReviews: "30"
+price: "19.95"
 tags:
   - product
 rightImage: /static/img/water-sports.webp

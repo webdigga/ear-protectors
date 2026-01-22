@@ -14,6 +14,7 @@ isAmazon: true
 affiliateName: Amazon
 productRating: "4.2"
 productReviews: "41"
+price: "19.95"
 tags:
   - product
 rightImage: /static/img/music.webp

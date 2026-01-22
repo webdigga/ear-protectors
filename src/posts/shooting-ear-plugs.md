@@ -9,6 +9,7 @@ isAmazon: true
 affiliateName: Amazon
 productRating: "4.2"
 productReviews: "226"
+price: "19.95"
 tags:
   - product
 rightImage: /static/img/amazon_shoot.webp

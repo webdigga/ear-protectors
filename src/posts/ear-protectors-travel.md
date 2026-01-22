@@ -10,6 +10,7 @@ isAmazon: true
 affiliateName: Amazon
 productRating: "3.3"
 productReviews: "4"
+price: "19.95"
 tags:
   - product
 rightImage: /static/img/travel.webp

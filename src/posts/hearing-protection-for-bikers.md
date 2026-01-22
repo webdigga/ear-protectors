@@ -10,6 +10,7 @@ isAmazon: true
 affiliateName: Amazon
 productRating: "4.2"
 productReviews: "433"
+price: "19.95"
 tags:
   - product
 rightImage: /static/img/biker-pack.webp

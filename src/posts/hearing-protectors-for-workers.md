@@ -24,6 +24,7 @@ isAmazon: true
 affiliateName: Amazon
 productRating: "4.2"
 productReviews: "11"
+price: "19.88"
 tags:
   - product
 rightImage: /static/img/work-pack.webp
