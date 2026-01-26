@@ -68,7 +68,8 @@ module.exports = function (eleventyConfig) {
   // Minify HTML
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
     // Eleventy 1.0+: use this.inputPath and this.outputPath instead
-    if (outputPath.endsWith(".html")) {
+    // Skip if outputPath is not a string (e.g., when permalink: false)
+    if (outputPath && typeof outputPath === 'string' && outputPath.endsWith(".html")) {
       let minified = htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
