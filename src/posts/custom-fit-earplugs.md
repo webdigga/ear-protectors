@@ -8,7 +8,7 @@ affiliateLink: ""
 isAmazon: false
 affiliateName: Auritech
 tags:
-  - product
+  - article
 rightImage: /static/img/custom_fit_review.webp
 rightImageAlt: MCN Quality rating
 ---
