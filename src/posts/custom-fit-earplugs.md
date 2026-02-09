@@ -7,6 +7,7 @@ type: article
 affiliateLink: ""
 isAmazon: false
 affiliateName: Auritech
+permalink: /ear-plugs/custom-fit-earplugs/
 tags:
   - article
 rightImage: /static/img/custom_fit_review.webp
